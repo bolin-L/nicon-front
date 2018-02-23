@@ -1,0 +1,142 @@
+@mixin menuItemSelected {
+    content: '';
+    height: 3px;
+    color: #fff;
+    background: #fff;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 8px;
+}
+.top-bar{
+    color: #fff;
+    height: 60px;
+    background: #333366;
+
+    &-center{
+        width: 1160px;
+        margin: 0 auto;
+    }
+
+    &-icon{
+        height: 60px;
+        font-size: 40px;
+        color: #fff;
+        line-height: 60px;
+    }
+
+    &-menu{
+        margin-left: 40px;
+
+        .active:after {
+            @include menuItemSelected;
+        }
+
+        &-item{
+            height: 60px;
+            padding: 0 15px;
+            font-size: 16px;
+            position: relative;
+
+            .text{
+                display: block;
+                color: #ddd9db;
+                line-height: 60px;
+                cursor: pointer;
+
+                &:hover{
+                    color: #fff;
+                    &:after {
+                        @include menuItemSelected;
+                    }
+                }
+            }
+        }
+    }
+
+    &-user{
+        height: 60px;
+        font-size: 28px;
+        padding: 0 15px;
+        color: #fff;
+        line-height: 60px;
+
+        a {
+            color: #fff;
+        }
+
+        .user {
+            position: relative;
+            top: 3px;
+        }
+
+        &-login {
+            font-size: 0;
+
+            span, a {
+                font-size: 16px;
+                padding: 0 8px;
+                cursor: pointer;
+            }
+        }
+
+        .title {
+            color: #495060;
+            font-size: 12px;
+            text-align: left;
+            padding: 2px 10px 2px 10px;
+        }
+
+        .entrance {
+            &-item {
+
+                a {
+                    display: block;
+                    font-size: 12px;
+                    color: #495060;
+                    height: 32px;
+                    line-height: 32px;
+                    text-align: left;
+                    padding: 2px 10px 2px 10px;
+                }
+
+                a:hover {
+                    background-color: #F3F4F6;
+                }
+            }
+        }
+    }
+
+    &-search {
+        width: 180px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+
+        .common-search-input {
+            border-radius: 20px;
+            overflow: hidden;
+            width: 100%;
+            border: 1px solid #fff;
+            height: 28px;
+        }
+
+        .ivu-input {
+            background: none;
+            color: #fff;
+            padding: 4px 12px;
+            font-size: 12px;
+            height: 26px;
+        }
+
+        .ivu-btn {
+            padding: 0 12px;
+        }
+
+        .ivu-input-group-append {
+            background: none;
+            border: none;
+            color: #fff;
+        }
+    }
+}

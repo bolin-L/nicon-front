@@ -1,0 +1,47 @@
+.user-icon-add {
+
+    .add-title {
+        font-size: 24px;
+        color: #336;
+        line-height: 24px;
+        height: 24px;
+        font-weight: normal;
+    }
+
+    .add-count {
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    .operator-box {
+        margin: 40px auto;
+    }
+
+    .submit-tip {
+        font-size: 12px;
+        color: #f20;
+        line-height: 24px;
+        text-align: center;
+    }
+
+    .normal {
+        color: #999;
+    }
+
+    .icon-submit{
+        margin: 0 auto;
+        display: block;
+        width: 160px;
+        background: #333366;
+        color: #fff;
+        height: 44px;
+        font-size: 16px;
+        border: 1px solid #333366;
+
+        &:hover{
+            border: 1px solid #494993;
+            background: #494993;
+            color: #fff;
+        }
+    }
+}

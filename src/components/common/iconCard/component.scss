@@ -1,0 +1,97 @@
+.common-icon-card{
+    float: left;
+    width: 100px;
+    height: 105px;
+    text-align: center;
+    position: relative;
+    border: 1px dashed #eee;
+    border-radius: 5px;
+    margin: 18px 14px 0 0;
+    overflow: hidden;
+
+
+    &-svg {
+        font-size: 36px;
+        max-width: 100%;
+        text-align: center;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-name {
+        display: block;
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        color: #666;
+        font-size: 12px;
+        text-align: center;
+        margin-top: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .edit-name {
+        margin-top: 15px;
+
+        .ivu-input-small {
+            text-align: center;
+            height: 20px;
+            line-height: 20px;
+        }
+    }
+
+    &-cover {
+        width: 100%;
+        height: 100%;
+        background: rgba(13,10,49,.9);
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        overflow: hidden;
+        vertical-align: middle;
+        border-radius: 5px;
+        font-size: 0;
+
+        .cover-item {
+            width: 50%;
+            height: 52.5px;
+            line-height: 52.5px;
+            text-align: center;
+            color: #fff;
+            font-size: 22px;
+            display: inline-block;
+            cursor: pointer;
+
+            &:hover {
+                background: #0d0a31;
+                color: red;
+            }
+        }
+    }
+
+    &:hover {
+        .common-icon-card-cover {
+            display: block;
+        }
+    }
+
+    &-selected {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .selected {
+        border-color: red;
+    }
+}

@@ -1,0 +1,32 @@
+.common-icon-list{
+    &-title {
+        font-size: 24px;
+        color: #336;
+        line-height: 24px;
+        height: 24px;
+        font-weight: normal;
+    }
+
+    &-count {
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    &-box {
+        margin-top: 30px;
+    }
+
+    &-page {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .item-add {
+        color: #333;
+        font-size: 14px;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

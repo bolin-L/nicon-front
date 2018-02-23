@@ -1,0 +1,10 @@
+<div class="user-icon-add">
+    <h3 class="add-title">图标草稿上传 <span class="add-count">已上传{{ totalCount }}个图标</span></h3>
+    <icon-add @onaddicon="updateIconList"></icon-add>
+    <icon-list :icon-operator-options="iconOperatorOptions" ref="iconList" @ongetlist="updateIconCount($event)" :list-opt="listOpt" :ext-opt="extOpt" empty-text="暂无草稿图标！"></icon-list>
+    <div class="operator-box">
+        <p v-if="totalCount > 0 && $route.params.repoId" class="submit-tip">注意：本次保存上传将会直接添加到图标库: 《{{ $route.params.repoName }}》中，中文图标名称会转为拼音</p>
+        <p v-if="totalCount > 0 && !$route.params.repoId" class="submit-tip normal">提示：中文图标名称会转为拼音！</p>
+        <i-button v-if="totalCount > 0" type="success" class="icon-submit" @click="submit()">保存上传</i-button>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+.login-form{
+    .ivu-row{
+        margin-top: 30px;
+    }
+
+    .ivu-col-span-4{
+        text-align: right;
+        height: 42px;
+        line-height: 42px;
+        font-size:16px;
+    }
+
+    .ivu-col-span-20{
+        line-height: 42px;
+        text-align: left;
+        padding-left: 25px;
+        position: relative;
+
+    }
+
+    .ivu-input-large{
+        height: 42px;
+    }
+
+    .ivu-btn {
+        width: 100%;
+        height:42px;
+        font-size: 16px;
+        background-color: #333366;
+        border-color: #333366;
+    }
+}

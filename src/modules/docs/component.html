@@ -1,0 +1,13 @@
+<div class="docs">
+    <div class="docs-side-menu">
+        <i-menu class="f-fl" :active-name="currentRouterPathName"  @on-select="changeTab($event)"  width="200px">
+            <i-menu-item :key="item.name" v-for="item in menus" :name="item.name">
+                <Icon :type="item.icon"></Icon>
+                {{ item.label }}
+            </i-menu-item>
+        </i-menu>
+    </div>
+    <div class="docs-content">
+        <router-view :key="currentRouterPath"></router-view>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+body {
+    background: #f8f8f8;
+}
+
+.search {
+
+    &-content {
+        width: 1200px;
+        margin: 0 auto;
+        padding: 10px 0 80px;
+    }
+
+    &-icon-list {
+        width: 1140px;
+        margin: 0 auto;
+    }
+
+    .common-icon-list-box {
+        min-height: 738px;
+        margin-top: 0;
+    }
+
+    .title {
+        line-height: 32px;
+        font-size: 16px;
+        text-align: left;
+        text-indent: 30px;
+    }
+
+    .total-count {
+        padding: 0 4px;
+        font-style: normal;
+        font-weight: bold;
+        color: #f20;
+    }
+}

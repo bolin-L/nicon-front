@@ -1,0 +1,106 @@
+.user-repo-detail {
+    width: 1140px;
+    margin: 0 auto;
+
+    .repo-icon-search {
+        margin-right: 20px;
+    }
+
+    .common-search-input {
+
+        .ivu-input {
+            border: 1px solid #dddee1;
+        }
+    }
+
+    .repo-detail {
+        height: 32px;
+        line-height: 32px;
+        font-size: 14px;
+        color: #333;
+        text-align: left;
+
+        .info-item {
+            margin-right: 15px;
+        }
+
+        .label {
+            color: #999;
+            font-size: 19px;
+            vertical-align: middle;
+        }
+
+        .repo-operator {
+        }
+
+        .repo-sync, .add-icon, .add-member {
+            margin-right: 20px;
+            background: none;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 6px 15px;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .repo-sync {
+            background: #336;
+            color: #fff;
+            border: 1px solid #336;
+        }
+
+        .add-icon {
+            cursor: pointer;
+            padding: 7px 15px;
+        }
+
+        .add-member-box {
+            margin-right: 20px;
+            width: 330px;
+        }
+
+        .member-select {
+            width: 80px;
+        }
+    }
+
+    .repo-css {
+        margin-top: 10px;
+        width: 520px;
+    }
+
+    .user-icon-list {
+        margin: 30px 0 60px;
+    }
+}
+
+.ivu-modal-body {
+    min-height: 300px;
+    padding: 16px 26px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.unique-icon-list {
+
+    .add-operator {
+        height: 32px;
+        line-height: 32px;
+    }
+
+    .common-search-input {
+
+        .ivu-input {
+            border: 1px solid #dddee1;
+        }
+    }
+
+    .common-icon-list-box {
+        margin-top: 0;
+
+        .common-icon-card:nth-child(5n) {
+            margin-right: 0;
+        }
+    }
+}

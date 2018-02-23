@@ -1,0 +1,9 @@
+<div class="common-icon-repo-list">
+    <div class="iconRepo-list" v-if="list.length > 0">
+        <icon-repo-card v-for="item in list" :key="item.repoId" :icon-repo="item" :is-owner="true"></icon-repo-card>
+    </div>
+    <common-empty text="暂无图标库!" v-else></common-empty>
+    <div class="list-page"  v-if="totalPageCount > 1">
+        <i-page :total="totalCount" :page-size="listOpt.pageSize" @on-change="turnPage($event)"></i-page>
+    </div>
+</div>

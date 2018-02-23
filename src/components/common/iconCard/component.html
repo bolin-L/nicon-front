@@ -1,0 +1,18 @@
+<div class="common-icon-card" @click="selectedIcon()">
+    <div class="common-icon-card-in">
+        <div class="common-icon-card-svg">
+            <span v-if="copyTextPrefix" :class="copyTextPrefix + icon.iconName"></span>
+            <span v-else v-html="icon.iconContent"></span>
+        </div>
+        <span class="common-icon-card-name" title="bulb" v-if="!isEdit">{{ icon.iconName }}</span>
+        <i-input @on-blur="editIcon" :autofocus="isEdit" v-model="icon.iconName" size="small" class="edit-name" v-else></i-input>
+        <div class="common-icon-card-selected" :class="{selected: selected}" v-if="iconActiveSelected"></div>
+        <div class="common-icon-card-cover" v-if="!iconActiveSelected && !isEdit">
+            <span v-if="iconOperatorOptions.allowCopy" :data-copy="copyTextPrefix + icon.iconName" title="复制图标名" class="cover-item icon-interactive copy-button"></span>
+            <span v-if="iconOperatorOptions.allowEdit" title="编辑图标" class="cover-item icon-editor" @click.stop="changeEditStatus"></span>
+            <span v-if="iconOperatorOptions.allowDelete" title="删除图标" class="cover-item icon-trash" @click="deleteIcon"></span>
+            <span v-if="iconOperatorOptions.allowDownload" title="下载图标" class="cover-item icon-download" @click="downloadIcon"></span>
+            <span v-if="iconOperatorOptions.allowCollect" title="收藏图标" class="cover-item icon-collection" @click="collectIcon"></span>
+        </div>
+    </div>
+</div>

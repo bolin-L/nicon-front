@@ -1,0 +1,21 @@
+<div class="login-dialog">
+    <modal v-model="showModal" :footer-hide="footerHide">
+        <div class="login-dialog">
+            <div slot="header">
+                <div class="login-dialog-header">
+                    <h3 class="title">{{ loginDialogType=='login' ? '登录' : '注册' }}</h3>
+                </div>
+            </div>
+            <div class="login-dialog-form">
+                <login-form v-if="loginDialogType=='login'"></login-form>
+                <register-form v-else></register-form>
+            </div>
+            <div slot="footer">
+                <div class="login-dialog-footer">
+                    <span v-if="loginDialogType=='login'" @click="changeLoginType('register')" class="go-register">去注册</span>
+                    <span v-else @click="changeLoginType('login')" class="go-login">去登录</span>
+                </div>
+            </div>
+        </div>
+    </modal>
+</div>

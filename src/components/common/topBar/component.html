@@ -1,0 +1,40 @@
+<header class="top-bar head">
+    <div class="top-bar-center">
+        <a href="/" class="top-bar-icon icon-flashlight-fill f-fl"></a>
+        <ul class="top-bar-menu f-fl">
+            <li v-for="item in menuList" class="top-bar-menu-item f-fl" :class="getActiveTab(item.moduleName)" @click="goModule(item.moduleName, item.noNeedLogin)">
+                <span class="text">{{ item.text }}</span>
+            </li>
+        </ul>
+        <div class="top-bar-user f-fr">
+            <div v-if="isLogin" class="top-bar-user-info">
+                <Poptip trigger="hover" placement="bottom">
+                    <a href="#" class="user icon-people-fill"></a>
+                    <div slot="title">
+                        <p class="title">欢迎使用！</p>
+                    </div>
+                    <div slot="content">
+                        <ul class="entrance">
+                            <!--<li class="entrance-item">-->
+                                <!--<a href="">个人设置</a>-->
+                            <!--</li>-->
+                            <li @click="logout" class="entrance-item">
+                                <a>退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                </Poptip>
+            </div>
+            <div v-else class="top-bar-user-login f-cb">
+                <a v-if="userInfo.loginUrl" class="login" :href="userInfo.loginUrl" target="_self">登录</a>
+                <template v-else>
+                    <span class="login" @click="login('login')">登录</span>
+                    <span class="register" @click="login('register')">注册</span>
+                </template>
+            </div>
+        </div>
+        <div class="top-bar-search f-fr" v-if="showSearchInput">
+            <search-input @search="search($event)" :init-value="q"></search-input>
+        </div>
+    </div>
+</header>

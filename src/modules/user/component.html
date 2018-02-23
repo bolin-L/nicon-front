@@ -1,0 +1,31 @@
+<div class="user-page">
+    <div class="user-info">
+        <div class="user-info-bg" p-id="19">
+            <div class="user-info-bg-wrap wrap">
+                <div class="planet planet-9"></div>
+                <div class="planet planet-10"></div>
+                <div class="planet planet-11"></div>
+                <div style="display: none;" class="planet planet-12" ></div>
+            </div>
+        </div>
+        <div class="user-info-box">
+            <div class="user-info-avatar">
+                <img class="head" v-if="user.avatar" :src="user.avatar">
+                <img class="cover" src="https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png" alt="">
+            </div>
+            <div class="user-info-detail">
+                <span class="name">
+                    {{ user.userName }}
+                </span>
+                <div class="repo-tabs f-cb">
+                    <i-menu class="f-fl" mode="horizontal" :active-name="currentRouterPathName"  @on-select="changeTab($event)">
+                        <i-menu-item :key="item.name" v-for="item in tabs" :name="item.name">{{ item.label }}</i-menu-item>
+                    </i-menu>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="user-page-detail">
+        <router-view :key="currentRouterPath"></router-view>
+    </div>
+</div>

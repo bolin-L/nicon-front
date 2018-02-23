@@ -1,0 +1,48 @@
+<div class="common-icon-repo-card">
+    <router-link class="repo-card-in"
+                 :to="{name: 'userRepoDetailModule', params: { repoId: iconRepo.repoId, userId: iconRepo.ownerId }}">
+        <div class="repo">
+            <ul class="repo-list f-cb" v-if="coverIcons.length > 0">
+                <li v-for="(item, index) in coverIcons" class="common-icon-item f-fl" v-html="item.iconContent">
+
+                </li>
+            </ul>
+            <div class="repo-list list-empty" v-else>
+                <div class="list-empty-in">
+                    <span class="icon-empty"></span>
+                    <p>暂无图标！</p>
+                </div>
+            </div>
+            <div class="repo-info">
+                <div class="repo-info-top">
+                    <span class="name">
+                        <span class="icon-group"></span>
+                        <span class="name-text">{{ iconRepo.repoName }}</span>
+                    </span>
+                    <span class="count">{{ iconRepo.iconCount || iconRepo.icons.length }} icons</span>
+                </div>
+
+                <div class="repo-info-bottom">
+                <span class="time">
+                    <span class="icon-clock"></span>
+                    <span class="name-text">{{ iconRepo.createTime | toDate}}</span>
+                </span>
+                <span v-if="false" class="count">
+                    <span class="delete">
+                        <span class="icon-empty-fill"></span>
+                        删除
+                    </span>
+                    <span class="edit">
+                        <span class="icon-brush"></span>
+                        编辑
+                    </span>
+                </span>
+                <span v-else class="repo-prefix">
+                    <span class="icon-flag"></span>
+                    <span class="">{{ iconRepo.iconPrefix}}</span>
+                </span>
+                </div>
+            </div>
+        </div>
+    </router-link>
+</div>

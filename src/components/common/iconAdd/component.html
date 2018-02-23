@@ -1,0 +1,24 @@
+<div class="common-icon-add">
+    <div class="upload-box">
+        <i-upload
+            multiple
+            :with-credentials="true"
+            :show-upload-list="false"
+            :format="['svg']"
+            :max-size="100"
+            :on-success="uploadSuccess"
+            :before-upload="beforeUpload"
+            :on-error="uploadFail"
+            :on-format-error="uploadFormatError"
+            type="drag"
+            accept="image/*"
+            :action="uploadIconPath">
+            <div class="upload-zone">
+                <p class="upload-icon">
+                    <span class="icon-upload-clound"></span>
+                </p>
+                <p class="upload-tip">将SVG文件拖拽至此，或点此上传</p>
+            </div>
+        </i-upload>
+    </div>
+</div>

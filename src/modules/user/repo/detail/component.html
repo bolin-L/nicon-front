@@ -1,0 +1,70 @@
+<div class="user-repo-detail">
+    <div class="repo-detail f-cb">
+        <div class="base-info f-fl">
+            <span class="repo-name info-item">
+            <span class="label icon-group"></span>
+            {{ repo.repoName }}
+        </span>
+            <span class="repo-prefix info-item">
+           <span class="label icon-flag"></span>
+            {{ repo.iconPrefix }}
+        </span>
+            <span class="repo-icon-count info-item">
+            <span class="label icon-stealth"></span>
+            {{ (repo.iconIds || {}).length || 0 }}
+        </span>
+        </div>
+        <div class="repo-operator f-fr" v-if="repo.isMember || repo.isOwner">
+            <i-button class="add-icon  f-fr" @click="showIconListDialog=!showIconListDialog">添加图标</i-button>
+            <i-button v-if="repo.isOwner && !member.addMemberStatus" class="add-member  f-fr" @click="member.addMemberStatus=true">添加成员</i-button>
+            <div class="add-member-box  f-fr" v-if="member.addMemberStatus">
+                <i-input v-model="member.account" class="member-input" >
+                    <i-select class="member-select" v-model="member.accountType" slot="prepend">
+                        <i-option v-for="item in member.typeList" :value="item.value">{{ item.text }}</i-option>
+                    </i-select>
+                    <i-button slot="append" @click="addMember">添加</i-button>
+                </i-input>
+            </div>
+            <i-button :loading="isSyncRepo" v-if="repo.unSync" type="success" class="repo-sync f-fr" @click="syncRepo()">保存更新</i-button>
+            <router-link :to="{name: 'userRepoEditModule', params: { repoId: repo.repoId}}">
+                <i-button v-if="repo.isOwner" type="success" class="add-icon f-fr">编辑</i-button>
+            </router-link>
+            <div class="repo-icon-search f-fr">
+                <search-input @search="search($event)" placeholder="搜索图标库图标"></search-input>
+            </div>
+        </div>
+    </div>
+    <div class="repo-css">
+        <i-input v-model="repo.cssUrl" class="css-input" >
+            <i-button class="copy-button" slot="prepend" :data-copy="repo.cssUrl">复制链接</i-button>
+        </i-input>
+    </div>
+    <div class="user-icon-list">
+        <icon-list :copy-text-prefix="repo.iconPrefix + '-'" :list-opt="listOpt" ref="repoIconList" :icon-operator-options="iconControl.iconOperatorOptions" @delete-icon="deleteIcon($event)"></icon-list>
+    </div>
+    <div v-if="showIconListDialog">
+        <modal
+            class="unique-icon-list"
+            v-model="showIconListDialog"
+            title="选择需要添加的图标"
+            ok-text="确认添加"
+            cancel-text="取消"
+            @on-ok="addIconToRepo"
+            width="610">
+            <div class="add-operator">
+                <i-checkbox v-model="selectedAllIconFlag" @on-change="selectAllIcon()">全选</i-checkbox>
+                <router-link :to="{name: 'userIconAdd2RepoModule', params: { repoId: repo.repoId, repoName: repo.repoName}}">
+                    从电脑上传
+                </router-link>
+                <div class="repo-icon-search f-fr">
+                    <search-input @search="uniqueSearch($event)" placeholder="搜索我的图标"></search-input>
+                </div>
+            </div>
+            <icon-list class="unique-icon-list" ref="addIconListRef"
+                :list-opt="listOptUnique"
+                empty-text="暂无可添加稿图标！"
+                :icon-active-selected="iconControl.iconActiveSelected"
+            ></icon-list>
+        </modal>
+    </div>
+</div>

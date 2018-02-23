@@ -1,0 +1,21 @@
+<div class="login-form">
+    <validation-box ref="validationBox">
+        <i-row>
+            <i-col span="24">
+                <i-input size="large" v-model="userName" :class="{invalid: userNameErr}" placeholder="请输入手机号码"></i-input>
+                <validation ref="userName" @invalid="userNameErr=true" @valid="userNameErr=false" :value="userName" :rules="rules.userName"></validation>
+            </i-col>
+        </i-row>
+        <i-row>
+            <i-col span="24">
+                <i-input size="large" type="password" v-model="password" :class="{invalid: passwordErr}" placeholder="请输入密码"></i-input>
+                <validation ref="password" @invalid="passwordErr=true" @valid="passwordErr=false" :value="password" :rules="rules.password"></validation>
+            </i-col>
+        </i-row>
+        <i-row>
+            <i-col span="24">
+                <i-button type="success" class="login-form-submit" @click="submit()">登录</i-button>
+            </i-col>
+        </i-row>
+    </validation-box>
+</div>

@@ -1,0 +1,29 @@
+<div class="repo-add" ref="validation-box">
+    <h2 class="repo-add-title">{{ isEdit ? '更新图标库' : '新建图标库' }}</h2>
+    <validation-box ref="validationBox">
+        <div class="repo-add-table">
+            <i-row>
+                <i-col span="4">图标库名称</i-col>
+                <i-col span="20">
+                    <i-input size="large" v-model="repoName" :class="{invalid: repoNameErr}" placeholder="请输入..."></i-input>
+                    <validation @invalid="repoNameErr=true" @valid="repoNameErr=false" :value="repoName" :rules="rules.repoName"></validation>
+                </i-col>
+            </i-row>
+            <i-row>
+                <i-col span="4">图标Icon前缀</i-col>
+                <i-col span="20">
+                    <i-input size="large" v-model="iconPrefix" :class="{invalid: iconPrefixErr}" placeholder="请输入..."></i-input>
+                    <validation ref="iconPrefix" :value="iconPrefix"  @invalid="iconPrefixErr=true"  @valid="iconPrefixErr=false" :rules="rules.iconPrefix"></validation>
+                </i-col>
+            </i-row>
+            <i-row>
+                <i-col span="4">图标库描述</i-col>
+                <i-col span="20">
+                    <i-input size="large" v-model="repoDescription" :class="{invalid: repoDescriptionErr}" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="请输入..."></i-input>
+                    <validation :value="repoDescription"  @invalid="repoDescriptionErr=true"  @valid="repoDescriptionErr=false" :rules="rules.repoDescription"></validation>
+                </i-col>
+            </i-row>
+        </div>
+    </validation-box>
+    <i-button type="success" class="repo-add-submit" :loading="isLoading" @click="submit()">确认提交</i-button>
+</div>

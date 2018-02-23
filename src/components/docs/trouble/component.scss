@@ -1,0 +1,31 @@
+.docs-trouble{
+    text-align: left;
+
+    .trouble-title {
+        font-size: 24px;
+        line-height: 60px;
+        height: 60px;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+
+    .trouble-content {
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 32px;
+            margin-top: 20px;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 22px;
+            margin-top: 5px;
+        }
+
+        .img {
+            max-width: 100%;
+        }
+    }
+}

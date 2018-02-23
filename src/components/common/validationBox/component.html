@@ -1,0 +1,4 @@
+<div class="validation-error" :class="classes" v-if="error.success === false">
+    <slot></slot>
+    <span class="error-tip" :class="'error-'+type">{{ error.message }}</span>
+</div>

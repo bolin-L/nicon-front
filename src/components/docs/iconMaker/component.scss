@@ -1,0 +1,38 @@
+.docs-icon-maker{
+    text-align: left;
+
+    .maker-title {
+        font-size: 24px;
+        line-height: 60px;
+        height: 60px;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+
+    .contents-title {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .contents-detail {
+        text-align: left;
+        margin-bottom: 50px;
+
+        svg {
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .detail-right {
+            display: inline-block;
+            width: 500px;
+            color: #999;
+            font-size: 12px;
+            line-height: 30px;
+            vertical-align: middle;
+            margin-left: 40px;
+        }
+    }
+}

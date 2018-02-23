@@ -1,0 +1,6 @@
+<div class="user-repo-list">
+    <div class="repo-list-operator f-cb">
+        <h3 class="title f-fl"><span class="count">共{{ totalCount}}个图标库</span></h3>
+    </div>
+    <icon-repo-list @ongetlist="updateRepoCount($event)" :list-opt="listOpt"></icon-repo-list>
+</div>

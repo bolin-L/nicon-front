@@ -1,0 +1,40 @@
+body {
+    background: #f8f8f8;
+}
+
+.docs {
+    width: 1200px;
+    display: flex;
+    margin: 30px auto 0;
+
+    &-side-menu {
+        background: #fff;
+
+        .ivu-menu-light:after {
+            display: none;
+        }
+
+        .ivu-menu-light.ivu-menu-vertical .ivu-menu-item {
+            border-left: 2px solid transparent;
+            border-right: none;
+        }
+
+        .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+            border-right: none;
+            border-left: 2px solid #336;
+            color: #336;
+        }
+
+        .ivu-menu-item {
+            border: none;
+            font-size: 18px;
+        }
+    }
+
+    &-content {
+        flex: 1;
+        background: #fff;
+        margin-left: 20px;
+        padding: 20px 40px 60px;
+    }
+}

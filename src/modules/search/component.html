@@ -1,0 +1,8 @@
+<div class="search">
+    <div class="search-content">
+        <h3 class="title">共<i class="total-count">{{ totalCount }}</i>个相关图标</h3>
+        <div class="search-icon-list">
+            <icon-list @ongetlist="updateIconCount($event)" :list-opt="listOpt"  ref="iconList" :icon-operator-options="iconControl.iconOperatorOptions"></icon-list>
+        </div>
+    </div>
+</div>

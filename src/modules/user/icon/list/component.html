@@ -1,0 +1,9 @@
+<div class="user-icon-list">
+    <div class="list-operator f-cb">
+        <h3 class="list-title f-fl"><span class="list-count">共{{ totalCount }}个图标</span></h3>
+        <div class="user-icon-search f-fr">
+            <search-input @search="search($event)" placeholder="搜索我的图标"></search-input>
+        </div>
+    </div>
+    <icon-list @ongetlist="updateIconCount($event)" :list-opt="listOpt" :icon-operator-options="iconOperatorOptions" ref="userIconList"></icon-list>
+</div>

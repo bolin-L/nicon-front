@@ -1,0 +1,38 @@
+.user-repo-list {
+    width: 1140px;
+    margin: 0 auto;
+
+    .common-icon-repo-card {
+        margin-right: 14px;
+    }
+
+    .common-icon-repo-card:nth-child(4n) {
+        margin-right: 0;
+    }
+
+    .title {
+        font-size: 24px;
+        color: #336;
+        line-height: 24px;
+        height: 24px;
+        font-weight: normal;
+
+        .count {
+            font-size: 14px;
+            color: #ccc;
+        }
+    }
+
+    .iconRepo-list {
+        text-align: left;
+    }
+
+    .user-create-btn {
+        color: #333;
+        font-size: 14px;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

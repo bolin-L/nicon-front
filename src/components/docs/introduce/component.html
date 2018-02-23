@@ -1,0 +1,82 @@
+<div class="docs-introduce">
+    <h3 class="introduce-title">功能介绍</h3>
+    <div class="introduce-content">
+        <h4 class="title">简介</h4>
+        <p class="description">
+            在字体图标日渐流行的今天，大家使用字体图标的方式多种多样，但是都只注重使用的方式却不注重来源与管理。而我们需要的是设计师与前端工程师能共同使用且集管理、自动生成前端可用图标等功能与一身的平台，因为图标是由设计师提供，前端使用的，如果只适用某一方那必定不能投入工程中使用。
+            <br>
+            <br>
+            现有的字体图标管理平台做的比较好的有icomoon与阿里的iconfont。icomoon不熟，iconfont的项目功能可以实现这个功能，其他的功能也实现的也比较好，个人项目使用的确好。但是别人的再好也不如自己的好，所以结合我们使用情况就参照iconfont徒手撸了一个字体图标管理平台，基本可以解决以下问题：
+            <br>
+            <br>
+            1. 解决设计图标管理、共享问题，实现图标统一管理，重复利用，查找方便<br>
+            2. 减少设计师与前端的交流时间成本。新增图标设计师上传平台确认没问题后再通知前端使用，避免因图标错误来回折腾<br>
+            3. 统一优化、生成图标，去掉前端手动操作流程，节约时间成本<br>
+            4. 众多好处, 一言难尽.......<br>
+            <!--原有的图标流程在设计师设计或查找图标过程与与前端工程时交流过程会耗费比较多的时间。对于设计师，设计图标对于有丰富图标库且管理规范的设计师来说还好，否则每次都重复设计生成需要耗费很多时间。而对于前端来说，每次都需要手动编译图标后才能使用，如果图标有问题还需要往复找设计师修改，前端觉得可以重用的图标由于对接不同的设计师而导致图标可能产生多个版本，也比较耗时。而图标管理平台的出现就是要解决以上问题：-->
+            <!--<br>-->
+        </p>
+        <h4 class="title">使用流程图</h4>
+        <p class="description">
+            <img src="http://edu-image.nosdn.127.net/0a712d18-fd7c-40ea-94ef-ef43dd2a5d88.png?imageView&quality=100"
+                 alt="" class="img">
+        </p>
+        <h4 class="title">使用步骤</h4>
+        <br>
+        <p class="description">
+            1. 创建一个图标库
+            <img class="img" src="http://edu-image.nosdn.127.net/946e19ee-bcbc-422c-a7d6-1aaafea37339.jpg?imageView&quality=100"
+                 alt="">
+            <br>
+            <br>
+            2. 上传图标。此阶段为图标草稿阶段，可进行删除、修改，确保图标名称唯一,点击保存上传之后，才可以加入图标库，如果不保存或者删除，则一直存留为草稿。
+            <img class="img" src="http://edu-image.nosdn.127.net/eb7a3307-4afd-4195-ab24-cf8c1fec9bd0.jpg?imageView&quality=100"
+                 alt="">
+            <br>
+            <br>
+            3. 把图标加入到图标库，保存更新。进入到指定图标库后，点击添加图标并选定需要添加的图标，确认之后出现保存更新按钮，点击就会生成新的图标文件，完成
+            <img class="img" src="http://edu-image.nosdn.127.net/5abf556c-f9db-40b6-8179-a01ece554635.jpg?imageView&quality=100" alt="">
+            <br>
+            <br>
+            4. 把css文件复制到前端工程中或者使用脚本自动导出所需格式文件
+        </p>
+
+        <h4 class="title">前端使用方式</h4>
+        <br>
+        <p class="description">
+            图标管理平台提供了三种图标使用方式， font class、svg files、svg sprite三种方式，可导出的资源类型包括css资源文件链接， css资源文件内容，svg文件内容，svg sprite 文件内容，各个工程可以根据自己的使用方式使用脚本导出合适的资源类型。
+            <br>
+            <br>
+            可以使用配套的工具 <a href="https://github.com/berlin-L/neicon-tool" target="_blank">neicon-tool</a> 来获取资源，简单方便、配置灵活。
+            或者有特殊需求的话可以把自动脚本拷贝到工程，并配置自己工程所需的资源类型配置，执行自动获取、替换资源脚本 <a href="http://cst.stu.126.net/u/js/cms/icon-resource-script.js?1514168160420" target="_blank">配置、资源脚本</a>
+            <br>
+            <br>
+            <b>font-class引用</b>
+            <br>
+            1. 配置脚本的资源配置type为cssUrl(外链)或者cssContent(內联)，运行脚本获取资源文件<br>
+            2. 挑选相应图标并获取字体编码，应用于页面<br>
+            <code>
+                &lt;i class="图标前缀-图标名称"&gt;&lt;/i&gt;
+            </code>
+            <br>
+            <br>
+            <b>svg文件使用</b>
+            <br>
+            1. 配置脚本的资源配置type为svg，运行脚本获取svg文件到指定目录<br>
+            2. 经过二次处理或直接使用、比如base64或其他方式
+            <br>
+            <br>
+            <b>svg sprite使用方式</b>
+            <br>
+            1. 配置脚本的资源配置type为svgSprite，运行脚本获取svgSprite 內联到html文件中<br>
+            2. 挑选相应图标并获取类名，应用于页面<br>
+            <code>
+                &lt;svg class="icon" aria-hidden="true"><br>
+                    &nbsp;&nbsp;&lt;use xlink:href="#图标前缀-图标名称">&lt;/use><br>
+                &lt;/svg>
+            </code>
+            <br>
+            这样使用的方式稍微麻烦，建议封装成组件传id就好，比如 &lt;icon id="图标前缀-图标名称">&lt;/icon>
+        </p>
+    </div>
+</div>

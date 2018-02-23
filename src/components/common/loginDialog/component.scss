@@ -1,0 +1,24 @@
+.login-dialog{
+    padding: 30px 30px 20px;
+
+    .title {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    &-footer {
+        margin-top: 10px;
+
+        .go-login {
+            cursor: pointer;
+        }
+
+        .go-register {
+            cursor: pointer;
+        }
+    }
+
+    .validation-error {
+        top: 46px;
+    }
+}

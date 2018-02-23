@@ -1,0 +1,46 @@
+.index-index-hello{
+    .index{
+        margin: 100px auto 0;
+        color: #336;
+
+        .common-search-input {
+            border: 1px solid #336;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .ivu-input {
+            font-size: 16px;
+            text-align: center;
+            height: 50px;
+        }
+
+        .ivu-input-group-append {
+            background: #336;
+            border: 1px solid #336;
+            color: #fff;
+            font-size: 17px;
+            padding: 0 12px;
+
+            .ivu-btn {
+                font-size: 26px;
+            }
+        }
+    }
+
+    .index-search {
+        width: 766px;
+        height: 50px;
+        margin: 0 auto;
+    }
+
+    .index-icon {
+        font-size: 120px;
+    }
+
+    .index-repo-list {
+        width: 1200px;
+        margin: 60px auto 120px;
+        text-align: left;
+    }
+}

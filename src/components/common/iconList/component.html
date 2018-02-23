@@ -1,0 +1,22 @@
+<div class="common-icon-list" >
+    <div class="common-icon-list-box f-cb" v-if="list.length > 0">
+        <icon-card
+            v-for="item in list"
+            :icon="item" :key="item.iconId"
+            @delete="deleteIcon($event)"
+            @collect="collectIcon($event)"
+            @selected="selectedIcon($event)"
+            @unselected="unselectedIcon($event)"
+            @edit="updateIcon($event)"
+            @download="downloadIcon($event)"
+            :icon-operator-options="iconOperatorOptions"
+            :icon-active-selected="iconActiveSelected"
+            :copy-text-prefix="copyTextPrefix"
+            :selected-all-icon-flag="selectedAllIconFlag"
+        ></icon-card>
+    </div>
+    <common-empty :text="emptyText || '暂无图标!'" v-else></common-empty>
+    <div class="common-icon-list-page"  v-if="totalPageCount > 1">
+        <i-page :total="totalCount" :page-size="listOpt.pageSize" @on-change="turnPage($event)"></i-page>
+    </div>
+</div>
