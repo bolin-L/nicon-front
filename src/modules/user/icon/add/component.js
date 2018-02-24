@@ -9,6 +9,7 @@ export default Base.extend({
     data () {
         return {
             title: 'Welcome to Icon App',
+            getListTimer: null,
             disabledSubmitBtn: false,
             listOpt: {
                 pageSize: 500
@@ -32,7 +33,10 @@ export default Base.extend({
             this.totalCount = (result.query || {}).totalCount || 0;
         },
         updateIconList () {
-            this.$refs.iconList.getList();
+            clearTimeout(this.getListTimer);
+            this.getListTimer = setTimeout(function () {
+                this.$refs.iconList.getList();
+            }.bind(this), 300)
         },
         submit () {
             this.disabledSubmitBtn = true;
