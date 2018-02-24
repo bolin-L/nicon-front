@@ -229,11 +229,13 @@ export default Base.extend({
             document.getElementsByTagName('head').item(0).appendChild(link)
         },
         updateFontStyle (cssUrl) {
-            let link = document.getElementById('currentRepoFontStyle')
-            if (link) {
-                link.href = cssUrl
-            } else {
-                this.insertFontStyle(cssUrl)
+            if (cssUrl) {
+                let link = document.getElementById('currentRepoFontStyle')
+                if (link) {
+                    link.href = cssUrl
+                } else {
+                    this.insertFontStyle(cssUrl)
+                }
             }
         }
     },
