@@ -15,20 +15,22 @@
         </span>
         </div>
         <div class="repo-operator f-fr" v-if="repo.isMember || repo.isOwner">
-            <i-button class="add-icon  f-fr" @click="showIconListDialog=!showIconListDialog">添加图标</i-button>
-            <i-button v-if="repo.isOwner && !member.addMemberStatus" class="add-member  f-fr" @click="member.addMemberStatus=true">添加成员</i-button>
-            <div class="add-member-box  f-fr" v-if="member.addMemberStatus">
-                <i-input v-model="member.account" class="member-input" >
-                    <i-select class="member-select" v-model="member.accountType" slot="prepend">
-                        <i-option v-for="item in member.typeList" :value="item.value">{{ item.text }}</i-option>
-                    </i-select>
-                    <i-button slot="append" @click="addMember">添加</i-button>
-                </i-input>
+            <div class="repo-operator-privilege f-fr"  v-if="repo.isMember || repo.isOwner">
+                <i-button class="add-icon  f-fr" @click="showIconListDialog=!showIconListDialog">添加图标</i-button>
+                <i-button v-if="repo.isOwner && !member.addMemberStatus" class="add-member  f-fr" @click="member.addMemberStatus=true">添加成员</i-button>
+                <div class="add-member-box  f-fr" v-if="member.addMemberStatus">
+                    <i-input v-model="member.account" class="member-input" >
+                        <i-select class="member-select" v-model="member.accountType" slot="prepend">
+                            <i-option v-for="item in member.typeList" :value="item.value">{{ item.text }}</i-option>
+                        </i-select>
+                        <i-button slot="append" @click="addMember">添加</i-button>
+                    </i-input>
+                </div>
+                <i-button :loading="isSyncRepo" v-if="repo.unSync" type="success" class="repo-sync f-fr" @click="syncRepo()">保存更新</i-button>
+                <router-link :to="{name: 'userRepoEditModule', params: { repoId: repo.repoId}}">
+                    <i-button v-if="repo.isOwner" type="success" class="add-icon f-fr">编辑</i-button>
+                </router-link>
             </div>
-            <i-button :loading="isSyncRepo" v-if="repo.unSync" type="success" class="repo-sync f-fr" @click="syncRepo()">保存更新</i-button>
-            <router-link :to="{name: 'userRepoEditModule', params: { repoId: repo.repoId}}">
-                <i-button v-if="repo.isOwner" type="success" class="add-icon f-fr">编辑</i-button>
-            </router-link>
             <div class="repo-icon-search f-fr">
                 <search-input @search="search($event)" placeholder="搜索图标库图标"></search-input>
             </div>
