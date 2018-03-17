@@ -1,8 +1,8 @@
 {
     "name": "icon-front",
     "version": "1.0.0",
-    "description": "A Vue.js project",
-    "author": "hzliaobolin <hzliaobolin@corp.netease.com>",
+    "description": "字体图标管理平台前端工程",
+    "author": "lbl_181 <lbl_181@163.com>",
     "private": true,
     "scripts": {
         "dev": "node build/dev-server.js",
@@ -11,11 +11,11 @@
         "lint": "eslint --ext .js,.vue src",
         "sync": "node tool/sync.js",
         "ui": "node tool/ui.js",
-        "icon": "neicon-tool --config ./config/icon.config.js"
+        "icon": "nicon-toolkit --config ./config/icon.config.js"
     },
     "dependencies": {
         "axios": "^0.16.2",
-        "axios-cache": "^1.0.3",
+        "axios-cache": "^1.2.0",
         "blueimp-md5": "^2.10.0",
         "clipboard": "^1.7.1",
         "commander": "^2.11.0",

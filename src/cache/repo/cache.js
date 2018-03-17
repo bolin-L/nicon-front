@@ -9,6 +9,7 @@ export default class RepoCache extends BaseCache {
     }
 
     init () {
+        super.init()
         this.doFlushSetting(
             CACHE_KEY, config
         )

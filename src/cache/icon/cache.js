@@ -9,6 +9,7 @@ export default class IconCache extends BaseCache {
     }
 
     init () {
+        super.init()
         this.doFlushSetting(
             CACHE_KEY, config
         )

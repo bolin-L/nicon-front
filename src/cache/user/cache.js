@@ -9,6 +9,7 @@ export default class LoginCache extends BaseCache {
     }
 
     init () {
+        super.init()
         this.doFlushSetting(
             CACHE_KEY, config
         )
@@ -53,7 +54,7 @@ export default class LoginCache extends BaseCache {
      * @return   {void}
      */
     getCurLoginUserInfo (options) {
-        this.sendRequest(
+        return this.sendRequest(
             'user-cur-get', options
         )
     }

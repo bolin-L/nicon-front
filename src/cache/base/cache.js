@@ -1,5 +1,5 @@
 // import AxiosCache from 'axios-cache'
-import AxiosCache from '@/axios-cache/cache'
+import AxiosCache from 'axios-cache'
 import config from './config'
 import setting from './setting'
 import {Message, Modal} from 'iview'
@@ -8,13 +8,13 @@ const CACHE_KEY = 'cache-base'
 export default class BaseCache extends AxiosCache {
     constructor () {
         super()
-        this.name = 123
+        this.globalCacheKey = CACHE_KEY
     }
 
     init () {
         super.init()
         // 设置工程通用请求配置
-        this.doFlushSetting(CACHE_KEY, config)
+        this.doFlushSetting(this.globalCacheKey, config)
         // 设置后端返回状态码与客户端状态码对应关系
         this.doMapStatusCode(setting.httpStatus, setting.clientCode)
     }

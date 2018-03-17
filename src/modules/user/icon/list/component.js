@@ -50,7 +50,7 @@ export default Base.extend({
         },
         search (q) {
             this.listOpt.q = q
-            this.listOpt.pageSize = 1
+            this.listOpt.pageIndex = 1
             this.$refs.userIconList.getList()
         }
     }

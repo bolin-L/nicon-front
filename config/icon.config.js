@@ -1,7 +1,8 @@
 module.exports = [
     {
-        "repoId": "2695",
+        "repoId": "71",
         "type": "cssUrl",
-        "output": "./index.html"
+        "output": "./index.html",
+        "apiUrl": "http://icon.bolin.site/api/repo/{repoId}/resource"
     }
 ];
