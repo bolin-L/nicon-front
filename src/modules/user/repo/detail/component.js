@@ -215,10 +215,12 @@ export default Base.extend({
         },
         search (q) {
             this.listOpt.q = q
+            this.listOpt.pageIndex = 1
             this.$refs.repoIconList.getList()
         },
         uniqueSearch (q) {
             this.listOptUnique.q = q
+            this.listOpt.pageIndex = 1
             this.$refs.addIconListRef.getList()
         },
         insertFontStyle (cssUrl) {
