@@ -1,0 +1,85 @@
+.install{
+    margin: 60px auto;
+    width: 960px;
+    text-align: center;
+
+    &-name {
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    .delete {
+        cursor: pointer;
+        font-size: 22px;
+    }
+
+    .validation-box {
+        margin-top: 30px;
+    }
+
+    .invalid {
+        .ivu-input {
+            border-color: #f20;
+        }
+
+        .ivu-input:hover {
+            box-shadow: 0 0 0 2px rgba(255, 34, 0, 0.1);
+        }
+    }
+
+    .validation-error{
+        position: absolute;
+        line-height: 28px;
+    }
+
+    &-title{
+        font-size: 24px;
+    }
+
+    &-table{
+
+        .ivu-row{
+            margin-top: 12px;
+        }
+
+        .ivu-col-span-2, .ivu-col-span-1 {
+            text-align: right;
+            height: 32px;
+            line-height: 32px;
+            font-size: 12px;
+        }
+
+        .ivu-col-span-1 {
+            text-align: center;
+            line-height: 46px;
+        }
+
+        .ivu-col-span-6, .ivu-col-span-5 {
+            line-height: 32px;
+            text-align: left;
+            padding-left: 10px;
+            position: relative;
+
+        }
+
+        .ivu-input-large{
+            height: 32px;
+        }
+    }
+
+    &-submit{
+        margin-top: 40px;
+        width: 160px;
+        background: #333366;
+        color: #fff;
+        height: 44px;
+        font-size: 16px;
+        border: 1px solid #333366;
+
+        &:hover{
+            border: 1px solid #494993;
+            background: #494993;
+            color: #fff;
+        }
+    }
+}

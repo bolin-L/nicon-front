@@ -30,6 +30,7 @@
 export default {
     // 服务器状态码
     httpStatus: {
+        CODE_INIT: [0], // 应用初始化
         CODE_OK: [200, 201, 202, 203, 204, 205, 206], // 成功
         CODE_WARM: [100, 101], // 警告
         CODE_ERROR: [500, 501, 502, 503, 504, 505], // 内部错误
@@ -42,6 +43,7 @@ export default {
         CODE_WARM: -5, // 错误 全局toast提示
         CODE_ERROR: -10, // 错误 全局弹框报错
         CODE_NO_AUTH: -30, // 未登录 全局弹登陆框或跳转登陆页
-        CODE_NO_PRIVILEGE: -50 // 无权限 跳转无权限页
+        CODE_NO_PRIVILEGE: -50, // 无权限 跳转无权限页
+        CODE_INIT: [-100] // 应用初始化
     }
 }

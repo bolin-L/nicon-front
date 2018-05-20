@@ -61,7 +61,10 @@ export default class BaseCache extends AxiosCache {
                     content: result.message
                 })
             }, 500)
-            break
+            break;
+        case setting.clientCode.CODE_INIT:
+            location.href = `${location.protocol}//${location.host}/#/install`;
+            break;
         default:
             console.log('code ' + code + ', message ' + result.message)
         }
