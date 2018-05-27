@@ -53,7 +53,7 @@ export default Base.extend({
                 typeList: [
                     {
                         value: MEMBER_ACCOUNT_TYPE_USER_NAME,
-                        text: 'corp前缀'
+                        text: '用户名称'
                     },
                     {
                         value: MEMBER_ACCOUNT_TYPE_USER_ID,

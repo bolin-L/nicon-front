@@ -4,7 +4,9 @@ import {
     Input as IInput,
     Button as IButton,
     Row as IRow,
-    Col as ICol
+    Col as ICol,
+    Tabs as ITabs,
+    TabPane as ITabPane
 } from 'iview'
 /**
  * 创建字体图标库
@@ -70,11 +72,87 @@ export default Base.extend({
                     value: 'icon.bolin.site',
                     description: '访问网站host',
                     necessary: true
+                },
+                {
+                    name: 'productType',
+                    value: 'default',
+                    description: '产品类型，自定义上传服务与登录服务文件夹名称，不使用则默认',
+                    necessary: true
                 }
-            ]
+            ],
+            login: {
+                index: '',
+                config: ''
+            },
+            upload: {
+                index: '',
+                config: ''
+            },
+            uploadPlaceholder: `
+                // index.js
+    
+                let config = require('./config');
+                let qiniu = require('qiniu');
+                
+                class QiniuUpload {
+                    async upload (dirPath) {
+                        let fontMap = await this.uploadFonts(dirPath);
+                        // 上传font完毕后替换css中的引用
+                        let cssContent = await this.replaceFontsInCss(dirPath, fontMap);
+                        let cssUrl = await this.uploadCss(dirPath, cssContent);
+                        
+                        // 上传返回数据格式
+                        return {
+                            url: cssUrl, // 必须
+                            cssContent: cssContent // 必须
+                        };
+                    }
+                }
+                
+                let uploadIns = new QiniuUpload();
+                module.exports = uploadIns.upload.bind(uploadIns);
+                `,
+            loginPlaceholder: `
+                // index.js
+    
+                require('request');
+                let rp = require('request-promise');
+                let config = require('./config');
+                
+                class GithubOpenIdLogin {
+                    async login (ctx) {
+                        return this.getUserBaseInfo(ctx);
+                    }
+                
+                    async getUserBaseInfo (ctx) {
+                        // your code
+                        
+                        // login 方法返回的数据格式
+                        return {
+                            userName: tokenInfo.sub, // 必须且唯一
+                            password: tokenInfo.sub,
+                            email: openIdUserInfo.email,
+                            nickName: openIdUserInfo.nickname,
+                            fullName: openIdUserInfo.fullname
+                        }
+                    }
+                }
+                
+                let loginIns = new GithubOpenIdLogin();
+                module.exports = loginIns.login.bind(loginIns);
+                `,
+            configPlaceholder: `
+                let pe = process.env;
+                
+                module.exports = {
+                    accessKey: pe.QINIU_UPLOAD_ACCESS_KEY,
+                    secretKey: pe.QINIU_UPLOAD_SECRET_KEY,
+                    bucket: pe.QINIU_UPLOAD_BUCKET,
+                    cdnHost: pe.QINIU_UPLOAD_CDN_HOST
+                };`
         }
     },
-    components: { IInput, IButton, IRow, ICol },
+    components: { IInput, IButton, IRow, ICol, ITabs, ITabPane },
     methods: {
         addItem () {
             this.config.push({
@@ -87,9 +165,13 @@ export default Base.extend({
             this.config.splice(index, 1);
         },
         submit () {
-            let data = this.config.filter(item => {
-                return item.value !== '';
-            })
+            let data = {
+                config: this.config.filter(item => {
+                    return item.value !== '';
+                }),
+                login: this.login,
+                upload: this.upload
+            };
             this.cache.installApplication({
                 data: data,
                 onload: result => {

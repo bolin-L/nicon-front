@@ -1,24 +1,57 @@
 <div class="install">
-    <h2 class="install-name">工程启动数据配置</h2>
-        <div class="install-table">
-            <i-row v-for="(item, index) in config" :key="index">
-                <i-col span="2">字段: </i-col>
-                <i-col span="6">
-                    <i-input :disabled="item.necessary" v-model="item.name"></i-input>
-                </i-col>
-                <i-col span="2">值: </i-col>
-                <i-col span="6">
-                    <i-input v-model="item.value"></i-input>
-                </i-col>
-                <i-col span="2">备注: </i-col>
-                <i-col span="5">
-                    <i-input v-model="item.description"></i-input>
-                </i-col>
-                <i-col span="1" v-if="!item.necessary">
-                    <span @click="deleteItem(index)" class="delete icon-delete"></span>
-                </i-col>
-            </i-row>
+    <h3 class="sub-name">启动数据配置</h3>
+    <p class="description">以下基本数据配置完成之后，理论山nicon服务就可以正常启动，连接上数据库提供服务了。但是如果需要自定义上传与登录服务时，需要添加额外的参数，添加的所有参数最终会在nicon工程目录中生成 <b>/bin/start.sh</b>文件，当应用启动时，以下所有参数都会加入到环境变量 <b>process.env</b>中,如需可取，如果需要配置错误需重新配置，只需要停掉服务、删掉工程中的<b>/bin/start.sh</b>文件, 再重新启动访问后就可以跳转到该页面再进行重新安装</p>
+    <div class="install-table">
+        <i-row v-for="(item, index) in config" :key="index">
+            <i-col span="2">字段: </i-col>
+            <i-col span="6">
+                <i-input :disabled="item.necessary" v-model="item.name"></i-input>
+            </i-col>
+            <i-col span="2">值: </i-col>
+            <i-col span="6">
+                <i-input v-model="item.value"></i-input>
+            </i-col>
+            <i-col span="2">备注: </i-col>
+            <i-col span="5">
+                <i-input v-model="item.description"></i-input>
+            </i-col>
+            <i-col span="1" v-if="!item.necessary">
+                <span @click="deleteItem(index)" class="delete icon-delete"></span>
+            </i-col>
+        </i-row>
+        <a class="add-item" title="添加字段" @click="addItem">
+            <span class="icon-addition"></span>
+        </a>
+    </div>
+    <p class="product-type description">
+        当需要非三方的登录、上传服务时，需要配置 <b>productType</b>的值，<b>productType</b>值的规则为 login[_upload]。 比如需要github三方登录，七牛的上传存储服务时，productType的值为 <b>github_qiniu</b>，即登录、上传服务的两两组合， 而当登录、上传类型的名称相同时，只需要login的名称就行，比如登录、上传服务都为netease,那么 <b>productType</b>为 <b>netease</b>即可。目前该工程中提供登录服务有两种 <b>default</b>、<b>github</b>，上传服务有两种 <b>default</b>、<b>github</b>，那么按照 <b>login_upload</b>的组合就有4中方式，如果 <b>productType</b>的值为以上四种组合，那么无需配置以下的登录、上传服务的代码，否者则需要配置</p>
+    <h3 class="sub-name">登录服务代码配置</h3>
+    <p class="description">需要接入自定义登录服务时，需要自己实现登录逻辑，并且登录的逻辑代码需要自己实现。代码中需要导出指定方法并且该方法需返回指定参数即可。当 <b>productType</b>不为 <b>default</b>或 <b>github_qiniu</b>等已经存在的服务时，才需要配置该文件</p>
+    <div class="install-table">
+        <div class="login-service">
+            <i-tabs value="index">
+                <i-tab-pane label="逻辑代码" name="index">
+                    <i-input :rows="16" v-model="login.index" :placeholder="loginPlaceholder" type="textarea"></i-input>
+                </i-tab-pane>
+                <i-tab-pane label="配置代码" name="config">
+                    <i-input :rows="16" v-model="login.config" :placeholder="configPlaceholder" type="textarea"></i-input>
+                </i-tab-pane>
+            </i-tabs>
         </div>
+    </div>
+    <h3 class="sub-name">上传服务代码配置</h3>
+    <p class="description">需要接入自定义上传服务时，需要自己实现上传逻辑，并且上传的逻辑代码需要自己实现。代码中需要导出指定方法并且该方法需返回指定参数即可。当 <b>productType</b>不为 <b>default</b>或 <b>github_qiniu</b>等已经存在的服务时，才需要配置该文件</p>
+    <div class="install-table">
+        <div class="upload-service">
+            <i-tabs value="index">
+                <i-tab-pane label="逻辑代码" name="index">
+                    <i-input :rows="16" v-model="upload.index" :placeholder="uploadPlaceholder" type="textarea"></i-input>
+                </i-tab-pane>
+                <i-tab-pane label="配置代码" name="config">
+                    <i-input :rows="16" v-model="upload.config" :placeholder="configPlaceholder" type="textarea"></i-input>
+                </i-tab-pane>
+            </i-tabs>
+        </div>
+    </div>
     <i-button type="success" class="install-submit" @click="submit()">提交</i-button>
-    <i-button type="success" class="install-submit" @click="addItem()">添加字段</i-button>
 </div>
