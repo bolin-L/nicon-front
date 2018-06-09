@@ -28,8 +28,12 @@
         color: #999;
     }
 
-    .icon-submit{
-        margin: 0 auto;
+    .operate-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    .submit{
         display: block;
         width: 160px;
         background: #333366;
@@ -41,6 +45,19 @@
         &:hover{
             border: 1px solid #494993;
             background: #494993;
+            color: #fff;
+        }
+    }
+
+    .submit-colorful {
+        margin-left: 30px;
+        background: #f20;
+        color: #fff;
+        border: 1px solid #f20;
+
+        &:hover{
+            border: 1px solid #f20;
+            background: #f22;
             color: #fff;
         }
     }

@@ -38,11 +38,12 @@ export default Base.extend({
                 this.$refs.iconList.getList();
             }.bind(this), 300)
         },
-        submit () {
+        submit (resetColor) {
             this.disabledSubmitBtn = true;
             this.cache.submitIconDraft2Icon({
                 data: {
-                    repoId: this.$route.params.repoId
+                    repoId: this.$route.params.repoId,
+                    resetColor: resetColor
                 },
                 onload: this.submitSuccess.bind(this)
             })

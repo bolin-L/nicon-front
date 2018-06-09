@@ -5,6 +5,9 @@
     <div class="operator-box">
         <p v-if="totalCount > 0 && $route.params.repoId" class="submit-tip">注意：本次保存上传将会直接添加到图标库: 《{{ $route.params.repoName }}》中，中文图标名称会转为拼音</p>
         <p v-if="totalCount > 0 && !$route.params.repoId" class="submit-tip normal">提示：中文图标名称会转为拼音！</p>
-        <i-button v-if="totalCount > 0" type="success" class="icon-submit" @click="submit()">保存上传</i-button>
+        <div class="operate-box" v-if="totalCount > 0">
+            <i-button  type="success" class="submit" @click="submit(true)">去除颜色上传</i-button>
+            <i-button type="success" class="submit submit-colorful" @click="submit()">保留颜色上传</i-button>
+        </div>
     </div>
 </div>
