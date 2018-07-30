@@ -18,10 +18,21 @@ let validator = {
     ],
     repoDescription: [
         {
-            type: 'isLength',
             message: '描述不能超过300字',
-            min: 0,
-            max: 300
+            options: {
+                min: 0,
+                max: 20
+            },
+            method: function (value, rule, options) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve({
+                            success: options.validator.isCnLength(value, rule),
+                            message: rule.message
+                        });
+                    }, 3000);
+                })
+            }
         }
     ]
 }

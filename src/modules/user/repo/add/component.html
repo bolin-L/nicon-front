@@ -19,8 +19,8 @@
             <i-row>
                 <i-col span="4">图标库描述</i-col>
                 <i-col span="20">
-                    <i-input size="large" v-model="repoDescription" :class="{invalid: repoDescriptionErr}" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="请输入..."></i-input>
-                    <validation :value="repoDescription"  @invalid="repoDescriptionErr=true"  @valid="repoDescriptionErr=false" :rules="rules.repoDescription"></validation>
+                    <i-input size="large" v-model="repoDescription" v-check="rules.repoDescription" :class="{invalid: repoDescriptionErr}" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="请输入..." @on-invalid="repoDescriptionErr=true"  @on-valid="repoDescriptionErr=false"></i-input>
+                    <!--<validation :value="repoDescription"  @invalid="repoDescriptionErr=true"  @valid="repoDescriptionErr=false" :rules="rules.repoDescription"></validation>-->
                 </i-col>
             </i-row>
         </div>

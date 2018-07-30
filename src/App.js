@@ -6,11 +6,20 @@ import App from './base/App'
 import router from './router/router'
 import cookie from 'vue-cookie'
 import iview from 'iview';
+import validator from './components/common/validator/index';
 
 Vue.config.productionTip = false
 Vue.use(cookie)
 Vue.use(Vuex)
 Vue.use(iview)
+Vue.use(validator, {
+    eventPatch: {
+        prefix: 'on-'
+    },
+    errorHandle (error, value, options) {
+        console.log(error);
+    }
+})
 
 const store = new Vuex.Store({
     state: {
