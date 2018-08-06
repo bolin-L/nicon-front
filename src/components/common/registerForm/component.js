@@ -1,6 +1,4 @@
 import Base from '@/base/base.vue'
-import validation from '@/components/common/validationBox/validation'
-import validationBox from '@/components/common/validationBox/validationBox'
 import validatorRules from './validateRules'
 import LoginCache from '@/cache/user/cache'
 import md5 from 'blueimp-md5'
@@ -17,23 +15,30 @@ export default Base.extend({
             title: 'Welcome to Icon App',
             userName: '',
             password: '',
-            userNameErr: '',
-            passwordErr: '',
+            rePassword: '',
             rules: validatorRules
         }
     },
-    components: { IInput, IButton, IRow, ICol, validation, validationBox },
+    components: { IInput, IButton, IRow, ICol },
     methods: {
         submit () {
-            if (!this.$refs.validationBox.validate()) {
-                return
-            }
-            this.cache.userRegister({
-                data: {
-                    userName: this.userName,
-                    password: md5(this.password)
-                },
-                onload: this.registerSuccess.bind(this)
+            this.$checkAll().then(() => {
+                this.cache.userRegister({
+                    data: {
+                        userName: this.userName,
+                        password: md5(this.password),
+                        rePassword: md5(this.rePassword)
+                    },
+                    onload: this.registerSuccess.bind(this)
+                })
+            }).catch(result => {
+                for (let attr in result.message) {
+                    if (result.message.hasOwnProperty(attr)) {
+                        this.$feedbackErrors(result.message[attr], {
+                            compIns: this.$refs[attr]
+                        })
+                    }
+                }
             })
         },
         registerSuccess (result) {
@@ -43,11 +48,11 @@ export default Base.extend({
                 this.$store.commit('showLoginModal', false)
                 this.$store.commit('webUser', result.result)
             } else {
-                // 注册失败，显示登录错误信息
-                if (typeof result.message === 'object') {
-                    for (let field of Object.keys(result.message)) {
-                        this.$refs[field] && (this.$refs[field].error = result.message[field]);
-                        this[field + 'Err'] = true;
+                for (let attr in result.message) {
+                    if (result.message.hasOwnProperty(attr)) {
+                        this.$feedbackErrors(result.message[attr], {
+                            compIns: this.$refs[attr]
+                        })
                     }
                 }
             }

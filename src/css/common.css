@@ -1,2 +1,6 @@
 @import "reset.css";
 @import "class.css";
+
+.ivu-form-item-error-tip {
+    position: relative;
+}

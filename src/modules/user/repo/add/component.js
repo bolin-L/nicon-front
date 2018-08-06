@@ -1,8 +1,5 @@
 import Base from '@/base/base.vue'
-import validation from '@/components/common/validationBox/validation'
-import validationBox from '@/components/common/validationBox/validationBox'
 import validatorRules from './validateRules'
-import validator from '@/util/validator'
 import RepoCache from '@/cache/repo/cache'
 import { mapState } from 'vuex'
 import {
@@ -28,15 +25,12 @@ export default Base.extend({
             repoName: '',
             iconPrefix: '',
             repoDescription: '',
-            repoNameErr: false,
-            iconPrefixErr: false,
-            repoDescriptionErr: false,
             rules: validatorRules,
             isLoading: false,
             isEdit: false
         }
     },
-    components: { IInput, IButton, Modal, Message, IRow, ICol, RadioGroup, IRadio, validation, validationBox },
+    components: { IInput, IButton, Modal, Message, IRow, ICol, RadioGroup, IRadio },
     computed: {
         ...mapState([
             'webUser'
@@ -44,35 +38,36 @@ export default Base.extend({
     },
     methods: {
         submit () {
-            if (!this.$refs.validationBox.validate()) {
-                return
-            }
-            // 验证通过后避免重复点击提交
-            this.isLoading = true
-            let data = {
-                repoName: this.repoName,
-                iconPrefix: this.iconPrefix,
-                repoDescription: this.repoDescription,
-                userId: this.webUser.userId,
-                repoId: this.$route.params.repoId
-            }
-            if (this.isEdit) {
-                this.cache.updateRepo({
-                    data: data,
-                    onload: this.createSuccess.bind(this),
-                    onerror: function () {
-                        this.isLoading = false;
-                    }.bind(this)
-                })
-            } else {
-                this.cache.createRepo({
-                    data: data,
-                    onload: this.createSuccess.bind(this),
-                    onerror: function () {
-                        this.isLoading = false;
-                    }.bind(this)
-                })
-            }
+            this.$checkAll().then(() => {
+                // 验证通过后避免重复点击提交
+                this.isLoading = true
+                let data = {
+                    repoName: this.repoName,
+                    iconPrefix: this.iconPrefix,
+                    repoDescription: this.repoDescription,
+                    userId: this.webUser.userId,
+                    repoId: this.$route.params.repoId
+                }
+                if (this.isEdit) {
+                    this.cache.updateRepo({
+                        data: data,
+                        onload: this.createSuccess.bind(this),
+                        onerror: function () {
+                            this.isLoading = false;
+                        }.bind(this)
+                    })
+                } else {
+                    this.cache.createRepo({
+                        data: data,
+                        onload: this.createSuccess.bind(this),
+                        onerror: function () {
+                            this.isLoading = false;
+                        }.bind(this)
+                    })
+                }
+            }).catch(errors => {
+                console.log(errors)
+            })
         },
         createSuccess (result) {
             if (result.result) {
@@ -81,7 +76,6 @@ export default Base.extend({
                     this.$router.push({name: 'userRepoListModule', params: {userId: this.webUser.userId}})
                 })
             } else {
-                validator.feedbackError(result, this)
                 this.isLoading = false;
             }
         },

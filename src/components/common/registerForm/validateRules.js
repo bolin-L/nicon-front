@@ -11,14 +11,20 @@ let validator = {
     ],
     password: [
         {
-            type: 'isRequired',
+            type: 'isFilled',
             message: '请填写密码'
         }
     ],
-    RePassword: [
+    rePassword: [
         {
-            type: 'isRequired',
-            message: '请填写密码'
+            type: 'isFilled',
+            message: '请确认密码'
+        },
+        {
+            message: '两次输入密码不一致',
+            method: function (value, rule, options) {
+                return value === options.compIns.$checkParent.password;
+            }
         }
     ]
 }

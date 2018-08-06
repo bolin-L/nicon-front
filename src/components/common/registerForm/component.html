@@ -1,27 +1,22 @@
-<div class="register-form">
-    <validation-box ref="validationBox">
-        <i-row>
-            <i-col span="24">
-                <i-input size="large" v-model="userName" :class="{invalid: userNameErr}" placeholder="请输入手机号码"></i-input>
-                <validation ref="userName" @invalid="userNameErr=true" @valid="userNameErr=false" :value="userName" :rules="rules.userName"></validation>
-            </i-col>
-        </i-row>
-        <i-row>
-            <i-col span="24">
-                <i-input size="large" type="password" v-model="password" :class="{invalid: passwordErr}" placeholder="请输入密码"></i-input>
-                <validation ref="password" @invalid="passwordErr=true" @valid="passwordErr=false" :value="password" :rules="rules.password"></validation>
-            </i-col>
-        </i-row>
-        <i-row v-if="false">
-            <i-col span="24">
-                <i-input type="password" size="large" v-model="rePassword" :class="{invalid: rePasswordErr}" placeholder="请再次确认密码"></i-input>
-                <validation ref="rePassword" @invalid="rePasswordErr=true" @valid="rePasswordErr=false" :value="rePassword" :rules="rules.rePassword"></validation>
-            </i-col>
-        </i-row>
-        <i-row>
-            <i-col span="24">
-                <i-button type="success" class="register-form-submit" @click="submit()">注册</i-button>
-            </i-col>
-        </i-row>
-    </validation-box>
+<div class="register-form" ref="checkContainer">
+    <i-row>
+        <i-col span="24">
+            <i-input size="large" v-model="userName" ref="userName" v-check="rules.userName" placeholder="请输入手机号码"></i-input>
+        </i-col>
+    </i-row>
+    <i-row>
+        <i-col span="24">
+            <i-input size="large" type="password" v-model="password"  ref="password"  v-check="rules.password"  placeholder="请输入密码"></i-input>
+        </i-col>
+    </i-row>
+    <i-row>
+        <i-col span="24">
+            <i-input type="password" size="large" v-model="rePassword"  ref="rePassword" v-check="rules.rePassword" placeholder="请再次确认密码"></i-input>
+        </i-col>
+    </i-row>
+    <i-row>
+        <i-col span="24">
+            <i-button type="success" class="register-form-submit" @click="submit()">注册</i-button>
+        </i-col>
+    </i-row>
 </div>
